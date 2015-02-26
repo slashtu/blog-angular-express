@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
+var apis = require('./routes/api');
 
 var app = express();
 
@@ -24,6 +25,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use('/users', users);
+app.use('/api', apis);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -56,5 +58,13 @@ app.use(function(err, req, res, next) {
     });
 });
 
+var server = app.listen(3000, function () {
+
+    var host = server.address().address
+    var port = server.address().port
+
+    console.log('Example app listening at http://%s:%s', host, port)
+
+})
 
 module.exports = app;
