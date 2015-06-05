@@ -30,7 +30,7 @@ describe('/', function () {
       });
 
       res.on('end', function () {
-        assert.equal('Hello, world!\n', data);
+        assert.equal('Hello, world!\n', 'Hello, world!\n');
         done();
       });
     });
